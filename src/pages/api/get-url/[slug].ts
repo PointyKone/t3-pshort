@@ -1,6 +1,5 @@
-import { prisma } from './../../server/db/client';
+import { prisma } from '../../../server/db/client';
 import { NextApiRequest, NextApiResponse } from "next";
-import { readSync } from 'fs';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const slug = req.query["slug"];
@@ -26,5 +25,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  return res.redirect(data.url)
+  return res.json(data)
 }
