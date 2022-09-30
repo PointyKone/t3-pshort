@@ -4,6 +4,6 @@
 
 @layer base {
     body {
-        @apply max-w-4xl mx-auto px-4 bg-gray-900 text-white
+        @apply max-w-4xl mx-auto px-4 bg-[#1C1B22] text-white
     }
 }
