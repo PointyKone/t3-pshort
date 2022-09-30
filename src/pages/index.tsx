@@ -92,7 +92,7 @@ const Home: NextPage = () => {
               })
             ) : (
               <div className="flex justify-between w-full">
-                <p className="border-2 border-[#d47fff] border-t-0 border-b-0 flex-1 max-w-[65%] p-2">
+                <p className="border-[#d47fff] border-r-2 flex-1 max-w-[65%] p-2">
                   Loading...
                 </p>
                 <p className="flex-1 text-right border-2 border-t-0 border-b-0 border-l-0 border-[#d47fff] max-w-[35%] p-2">
