@@ -77,6 +77,17 @@ export const linksRouter = createRouter()
 						}
 					})
 					return newLink
+				} else {
+					const newLink = await ctx.prisma.shortLink.update({
+						where: {
+							id: input.id
+						},
+						data: {
+							slug: input.slug.replace(/\s/g, ''),
+							url: input.url
+						}
+					})
+					return newLink
 				}
 			})
 		}
