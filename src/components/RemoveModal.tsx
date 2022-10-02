@@ -45,7 +45,7 @@ const RemoveModal = ({ setShowRemoveModal, setShowEditModal, link }: ModalType) 
 						</div>
 						{/*body*/}
 						<div className="relative p-6 flex-auto text-black">
-							Are you sure you want to remove this Shortened Link?
+							Are you sure you want to remove this ShortLink?
 						</div>
 						{/*footer*/}
 						<div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -69,7 +69,7 @@ const RemoveModal = ({ setShowRemoveModal, setShowEditModal, link }: ModalType) 
 					</div>
 				</div>
 			</div>
-		<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+			<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
 		</>
   	);
 };

@@ -8,7 +8,7 @@ type ModalType = {
 
 const Modal = ({setShowModal}: ModalType) => {
 
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState("https://")
   const [slug, setSlug] = useState("")
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +57,7 @@ const Modal = ({setShowModal}: ModalType) => {
                   <label className="text-black m-4" htmlFor="url">Slug:</label>
                   <input className="text-black" name="url" type="text" onChange={handleSlugChange} placeholder="mysite"/>
                   <label className="text-black m-4" htmlFor="url">Goes To:</label>
-                  <input className="text-black" name="url" type="text" onChange={handleUrlChange} placeholder="https://pointykone.com"/>
+                  <input className="text-black" name="url" type="text" onChange={handleUrlChange} value={url}/>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
