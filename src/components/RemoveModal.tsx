@@ -1,15 +1,19 @@
+import { ShortLink } from "@prisma/client";
 import { useEffect, useState } from "react";
 import { trpc } from "../utils/trpc";
 import { LoadingButton } from "./LoadingButton";
 
 type ModalType = {
-  setShowModal: (value: boolean) => void;
-  id: number
+  setShowRemoveModal: (value: boolean) => void;
+  setShowEditModal: (value: boolean) => void;
+  link: ShortLink;
 };
 
-const RemoveModal = ({ setShowModal, id }: ModalType) => {
+const RemoveModal = ({ setShowRemoveModal, setShowEditModal, link }: ModalType) => {
 
 	const mutation = trpc.useMutation(["links.delete"])
+
+	const [isMounted, setIsMounted] = useState(false)
 
 	const deleteLink = (id: number) => {
 		mutation.mutate({
@@ -18,7 +22,7 @@ const RemoveModal = ({ setShowModal, id }: ModalType) => {
 	}
 
 	useEffect(() => {
-		if (mutation.isSuccess) setShowModal(false)
+		if (mutation.isSuccess) setShowRemoveModal(false)
 	  }, [mutation.isSuccess])
 
 	return (
@@ -32,7 +36,7 @@ const RemoveModal = ({ setShowModal, id }: ModalType) => {
 							<h3 className="text-3xl font-semibold">Remove ShortLink</h3>
 							<button
 								className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-								onClick={() => setShowModal(false)}
+								onClick={() => setShowRemoveModal(false)}
 							>
 								<span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
 								x
@@ -48,13 +52,16 @@ const RemoveModal = ({ setShowModal, id }: ModalType) => {
 						<button
 							className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 							type="button"
-							onClick={() => setShowModal(false)}
+							onClick={() => {
+								setShowRemoveModal(false)
+								setShowEditModal(true)
+							}}
 						>
 							Close
 						</button>
 						<LoadingButton
 							loading={mutation.isLoading}
-							onClick={() => deleteLink(id)}
+							onClick={() => deleteLink(link.id)}
 						>
 							Remove ShortLink
 						</LoadingButton>
