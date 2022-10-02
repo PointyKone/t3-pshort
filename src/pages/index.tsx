@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     links.refetch();
-  }, [showModal, showEditModal]);
+  }, [showModal, showEditModal, showRemoveModal]);
 
   return (
     <main className="min-h-screen flex flex-col justify-center">
