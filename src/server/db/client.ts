@@ -44,7 +44,7 @@ let supabase;
 if (supabaseKey && supabaseUrl) {
   supabase = createClient(supabaseUrl, supabaseKey, options)
 } else {
-  console.log("Please make sure a supabase URL and Key are set.")
+  console.error("Please make sure a supabase URL and Key are set")
 }
 
 export {supabase};
